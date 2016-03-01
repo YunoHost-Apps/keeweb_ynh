@@ -1,6 +1,7 @@
 # Keeweb for YunoHost #
 
 Web client for reading and editing Keepass files locally. It can also sync with Dropbox.
+![screenshot](https://habrastorage.org/files/ec9/108/3de/ec91083de3e64574a504bc438d038dec.png)
 
 **Current version: 1.0.4**
 
