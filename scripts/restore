@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# causes the shell to exit if any subcommand or pipeline returns a non-zero status
+set -e
+
+app=keeweb
+
+# The parameter $1 is the uncompressed restore directory location
+	backup_dir=$1/apps/$app
+
+# Restore sources & data
+	sudo cp -a $backup_dir/sources/. /var/www/$app
+
+# Restore permissions to app files
+	sudo chown -R root:root $final_path
+
+# Restore Nginx and YunoHost parameters
+	sudo cp -a $backup_dir/yunohost/. /etc/yunohost/apps/$app
+	domain=$(sudo yunohost app setting $app domain)
+	sudo cp -a $backup_dir/nginx.conf /etc/nginx/conf.d/$domain.d/$app.conf
+
+# Restart webserver
+	sudo service nginx reload
