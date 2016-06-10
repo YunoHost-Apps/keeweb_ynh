@@ -42,14 +42,6 @@
                 "default": "/passwords"
             },
             {
-                "name": "dropbox",
-                "ask": {
-                    "en": "To sync with Dropbox, create a Dropbox app and enter here your app key (Settings/App key)",
-                    "fr": "Pour synchroniser avec Dropbox, créez une app Dropbox et entrez ici votre clé (Settings/App key)"
-                },
-                "example": "qp7ctun6qt5n9d6"
-            },
-            {
                 "name": "is_public",
                 "ask": {
                     "en": "Is it a public application?",

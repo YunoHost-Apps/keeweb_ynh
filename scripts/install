@@ -8,22 +8,14 @@ app=keeweb
 # Retrieve arguments
 	domain=$1
 	path=$2
-	dropbox=$3
-	is_public=$4
+	is_public=$3
 
 # Save app settings
-	sudo yunohost app setting $app dropbox -v "$dropbox"
 	sudo yunohost app setting $app is_public -v "$is_public"
 
 # Check domain/path availability
 	sudo yunohost app checkurl $domain$path -a $app \
 		|| (echo "Path not available: $domain$path" && exit 1)
-
-# If a Dropbox app key is present, add it
-	if [ -n "$dropbox" ];
-	then
-		sudo sed -i.bak s/qp7ctun6qt5n9d6/$dropbox/g ../sources/index.html
-	fi
 		
 # Copy source files
 	final_path=/var/www/$app

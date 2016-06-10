@@ -5,10 +5,14 @@ Web client for reading and editing Keepass files locally. It can also sync with 
 
 **Current version: 1.1.4**
 
+## Usage with OwnCloud ##
+1. Open your file through webdav using https://linktoowncloud/remote.php/webdav and your username and password
+
 ## Usage for Dropbox sync ##
 1. [create](https://www.dropbox.com/developers/apps/create) a Dropbox app
 2. find your app key (in Dropbox App page, go to Settings/App key)
 3. Enter the app key during install
+
 
 
 **More information on the documentation page:**    
