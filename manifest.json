@@ -7,7 +7,8 @@
         "fr": "Gestionnaire de mots de passe compatible avec KeePass."
     },
     "url": "https://keeweb.info/",
-    "license": "free",
+	"license": "AGPL-3",
+    "version": "1.1.4",
     "maintainer": {
         "name": "Scith",
         "url": "https://github.com/scith"
