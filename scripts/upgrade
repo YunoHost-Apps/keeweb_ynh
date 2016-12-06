@@ -40,9 +40,9 @@ app=$YNH_APP_INSTANCE_NAME
 
 # Migrate old apps
 	if [ "$is_public" = "Yes" ]; then
-		  ynh_app_setting_set "$app" is_public "true"
+		  ynh_app_setting_set "$app" is_public "1"
 	elif [ "$is_public" = "No" ]; then
-		  ynh_app_setting_set "$app" is_public "false"
+		  ynh_app_setting_set "$app" is_public "0"
 	fi
 	
 # If app is public, add url to SSOWat conf as skipped_uris
