@@ -17,7 +17,7 @@ app=$YNH_APP_INSTANCE_NAME
 	if [ -f $conf ]; then
 		ynh_die "There is already a nginx conf file at this path: $conf"
 	fi
-	sudo cp -a $backup_dir/nginx.conf $conf	
+	sudo cp -a ./nginx.conf $conf	
 
 # Restore sources & data
 	src_path="/var/www/${app}"
