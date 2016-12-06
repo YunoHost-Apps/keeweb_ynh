@@ -9,7 +9,11 @@ Web client for reading and editing Keepass files locally. It can also sync with 
 ## Usage for Dropbox sync ##
 1. [create](https://www.dropbox.com/developers/apps/create) a Dropbox app
 2. find your app key (in Dropbox App page, go to Settings/App key)
+3. Enter the app key when prompted
 
+## Add default files on your homepage ##
+1. Read https://github.com/keeweb/keeweb/wiki/Configuration#json-app-config
+2. In your config.json add the "files" entry with the appropriate settings
 
 **More information on the documentation page:**    
 https://keeweb.info/
