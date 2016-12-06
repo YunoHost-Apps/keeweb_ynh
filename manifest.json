@@ -1,26 +1,25 @@
 {
-	"package_format": 1,
     "name": "Keeweb",
     "id": "keeweb",
+	"packaging_format": 1,
     "description": {
         "en": "Password manager compatible with KeePass.",
         "fr": "Gestionnaire de mots de passe compatible avec KeePass."
     },
     "url": "https://keeweb.info/",
-	"license": "AGPL-3",
-    "version": "1.1.4",
+    "license": "free",
     "maintainer": {
         "name": "Scith",
         "url": "https://github.com/scith"
     },
-    "multi_instance": "false",
+    "requirements": {
+        "yunohost": ">> 2.4.0"
+    },
+    "multi_instance": true,
     "services": [
         "nginx",
         "php5-fpm"
     ],
-	"requirements": {
-        "yunohost": ">= 2.2"
-    },
     "arguments": {
         "install" : [
             {
@@ -39,17 +38,17 @@
                     "en": "Choose a path for Keeweb",
                     "fr": "Choisissez un chemin pour Keeweb"
                 },
-                "example": "/passwords",
-                "default": "/passwords"
+                "example": "/keeweb",
+                "default": "/keeweb"
             },
             {
                 "name": "is_public",
+                "type": "boolean",
                 "ask": {
                     "en": "Is it a public application?",
                     "fr": "Est-ce une application publique ?"
                 },
-                "choices": ["Yes", "No"],
-                "default": "No"
+                "default": true
             }
         ]
     }

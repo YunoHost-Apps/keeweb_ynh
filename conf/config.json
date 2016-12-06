@@ -1,0 +1,42 @@
+{
+  "settings": {
+    "theme": "fb",
+    "locale": "en",
+    "expandGroups": true,
+    "listViewWidth": null,
+    "menuViewWidth": null,
+    "tagsViewHeight": null,
+    "autoUpdate": "install",
+    "autoSave": true,
+    "rememberKeyFiles": false,
+    "idleMinutes": 15,
+    "tableView": false,
+    "colorfulIcons": false,
+    "lockOnCopy": false,
+    "skipOpenLocalWarn": false,
+    "hideEmptyFields": false,
+    "skipHttpsWarning": true,
+    "demoOpened": false,
+    "fontSize": 0,
+    "tableViewColumns": null,
+    "generatorPresets": null,
+
+    "canOpen": true,
+    "canOpenDemo": true,
+    "canOpenSettings": true,
+    "canCreate": true,
+    "canImportXml": true,
+
+    "dropbox": true,
+    "dropboxFolder": null,
+    "dropboxAppKey": null,
+
+    "webdav": true,
+
+    "gdrive": true,
+    "gdriveClientId": null,
+
+    "onedrive": true,
+    "onedriveClientId": null
+  }
+}
