@@ -22,8 +22,8 @@ app=$YNH_APP_INSTANCE_NAME
 	fi
 	
 # Save app settings
-	ynh_app_setting_set "$domain" domain "$domain"
-	ynh_app_setting_set "$path" path "$path"
+	ynh_app_setting_set "$app" domain "$domain"
+	ynh_app_setting_set "$app" path "$path"
 	ynh_app_setting_set "$app" is_public "$is_public"
 
 # Check domain/path availability
