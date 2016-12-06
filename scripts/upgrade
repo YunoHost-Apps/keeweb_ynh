@@ -28,7 +28,8 @@ app=$YNH_APP_INSTANCE_NAME
 # Copy source files
 	src_path=/var/www/$app
 	sudo mkdir -p $src_path
-	sudo cp -a index.html manifest.appcache ../conf/config.json $src_path
+	sudo cp -a index.html manifest.appcache $src_path
+	#sudo cp -a ../conf/config.json $src_path
 
 # Set permissions to app files
 	sudo chown -R root: $src_path
