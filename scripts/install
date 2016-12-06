@@ -20,15 +20,15 @@ app=$YNH_APP_INSTANCE_NAME
 	if [ "${path:${#path}-1}" == "/" ] && [ ${#path} -gt 1 ]; then
 		path="${path:0:${#path}-1}"
 	fi
+
+# Check domain/path availability
+	sudo yunohost app checkurl "${domain}${path}" -a "$app" \
+		|| ynh_die "Path not available: ${domain}${path}"
 	
 # Save app settings
 	ynh_app_setting_set "$app" domain "$domain"
 	ynh_app_setting_set "$app" path "$path"
 	ynh_app_setting_set "$app" is_public "$is_public"
-
-# Check domain/path availability
-	sudo yunohost app checkurl "${domain}${path}" -a "$app" \
-		|| ynh_die "Path not available: ${domain}${path}"
 
 # Download source
 	sudo wget -q https://raw.githubusercontent.com/keeweb/keeweb/gh-pages/index.html
