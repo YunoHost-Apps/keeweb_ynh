@@ -13,10 +13,17 @@ app=$YNH_APP_INSTANCE_NAME
 	path=$YNH_APP_ARG_PATH
 	is_public=$YNH_APP_ARG_IS_PUBLIC
 
-# Remove trailing "/" for next commands
-	path=${path%/}
+# Correct path
+	if [ "${path:0:1}" != "/" ]; then
+		path="/$path"
+	fi
+	if [ "${path:${#path}-1}" == "/" ] && [ ${#path} -gt 1 ]; then
+		path="${path:0:${#path}-1}"
+	fi
 	
 # Save app settings
+	ynh_app_setting_set "$app" domain "$domain"
+	ynh_app_setting_set "$app" path "$path"
 	ynh_app_setting_set "$app" is_public "$is_public"
 
 # Check domain/path availability
@@ -24,8 +31,8 @@ app=$YNH_APP_INSTANCE_NAME
 		|| ynh_die "Path not available: ${domain}${path}"
 
 # Download source
-	sudo wget https://raw.githubusercontent.com/keeweb/keeweb/gh-pages/index.html
-	sudo wget https://raw.githubusercontent.com/keeweb/keeweb/gh-pages/manifest.appcache
+	sudo wget -q https://raw.githubusercontent.com/keeweb/keeweb/gh-pages/index.html
+	sudo wget -q https://raw.githubusercontent.com/keeweb/keeweb/gh-pages/manifest.appcache
 	sudo sed -i.bak 's/(no-config)/config.json/g' index.html
 		
 # Copy source files
@@ -43,7 +50,6 @@ app=$YNH_APP_INSTANCE_NAME
 
 # If app is public, add url to SSOWat conf as skipped_uris
 	if [[ $is_public -eq 1 ]]; then
-	  # unprotected_uris allows SSO credentials to be passed anyway.
 	  ynh_app_setting_set "$app" unprotected_uris "/"
 	fi
 
