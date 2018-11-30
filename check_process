@@ -1,5 +1,4 @@
 ;; Full test on Keeweb
-	auto_remove=1
 	; Manifest
 		domain="domain.tld"	(DOMAIN)
 		path="/path"	(PATH)
@@ -12,12 +11,28 @@
 		setup_private=1
 		setup_public=1
 		upgrade=1
+		upgrade=1	from_commit=9e5c65c461a22d9b85be732e072ff938911106ad
 		backup_restore=1
 		multi_instance=1
-		wrong_user=0
-		wrong_path=1
 		incorrect_path=1
-		corrupt_source=0
-		fail_download_source=0
 		port_already_use=0
-		final_path_already_use=0
+		change_url=1
+;;; Levels
+	Level 1=auto
+	Level 2=auto
+	Level 3=auto
+# Level 4: No users management.
+	Level 4=na
+	Level 5=auto
+	Level 6=auto
+	Level 7=auto
+	Level 8=0
+	Level 9=0
+	Level 10=0
+;;; Options
+Email=maniackc_dev@crudelis.fr
+Notification=down
+;;; Upgrade options
+	; commit=9e5c65c461a22d9b85be732e072ff938911106ad
+		name=6 Dec 2016 9e5c65c461a22d9b85be732e072ff938911106ad
+		manifest_arg=domain=DOMAIN&path=PATH&is_public=1
