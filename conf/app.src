@@ -1,0 +1,6 @@
+SOURCE_URL=https://github.com/keeweb/keeweb/archive/v1.6.3.tar.gz
+SOURCE_SUM=097afbc94215206a3f7268e9e55c1a3c
+SOURCE_SUM_PRG=md5sum
+SOURCE_FORMAT=tar.gz
+SOURCE_IN_SUBDIR=true
+SOURCE_FILENAME=

@@ -1,51 +1,134 @@
 #!/bin/bash
 
-# Exit on command errors and treat unset variables as an error
-set -eu
+#=================================================
+# GENERIC STARTING
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
+source _common.sh
+source /usr/share/yunohost/helpers
+
+#=================================================
+# LOAD SETTINGS
+#=================================================
 
 app=$YNH_APP_INSTANCE_NAME
 
-# Source YunoHost helpers
-	source /usr/share/yunohost/helpers
+domain=$(ynh_app_setting_get $app domain)
+path_url=$(ynh_app_setting_get $app path)
+is_public=$(ynh_app_setting_get $app is_public)
+final_path=$(ynh_app_setting_get $app final_path)
 
-# Retrieve arguments
-	domain=$(ynh_app_setting_get "$app" domain)
-	path=$(ynh_app_setting_get "$app" path)
-	is_public=$(ynh_app_setting_get "$app" is_public)
+#=================================================
+# CHECK VERSION
+#=================================================
 
-# Download source
-	sudo wget -q https://raw.githubusercontent.com/keeweb/keeweb/gh-pages/index.html
-	sudo wget -q https://raw.githubusercontent.com/keeweb/keeweb/gh-pages/manifest.appcache
-	sudo sed -i.bak 's/(no-config)/config.json/g' index.html
-		
-# Copy source files
-	src_path=/var/www/$app
-	sudo mkdir -p $src_path
-	sudo cp -a index.html manifest.appcache $src_path
-	#sudo cp -a ../conf/config.json $src_path
+upgrade_type=$(ynh_check_app_version_changed)
 
-# Set permissions to app files
-	sudo chown -R root: $src_path
+#=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
 
-# Modify Nginx configuration file and copy it to Nginx conf directory
-	sed -i "s@YNH_WWW_PATH@$path@g" ../conf/nginx.conf
-	sed -i "s@YNH_WWW_ALIAS@$src_path/@g" ../conf/nginx.conf
-	sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/$app.conf
+if [ "$is_public" = "Yes" ]; then
+	ynh_app_setting_set $app is_public 1	# Fixe is_public en booléen
+	is_public=1
+elif [ "$is_public" = "No" ]; then
+	ynh_app_setting_set $app is_public 0
+	is_public=0
+fi
 
-# Migrate old apps
-	if [ "$is_public" = "Yes" ]; then
-		  ynh_app_setting_set "$app" is_public "1"
-		  is_public=$(ynh_app_setting_get "$app" is_public)
-	elif [ "$is_public" = "No" ]; then
-		  ynh_app_setting_set "$app" is_public "0"
-		  is_public=$(ynh_app_setting_get "$app" is_public)
-	fi
-	
-# If app is public, add url to SSOWat conf as skipped_uris
-	if [[ $is_public -eq 1 ]]; then
-	  # unprotected_uris allows SSO credentials to be passed anyway.
-	  ynh_app_setting_set "$app" unprotected_uris "/"
-	fi
+if [ -z "$final_path" ]; then
+	final_path=/var/www/$app
+	ynh_app_setting_set $app final_path $final_path
+fi
 
-# Restart services
-	sudo service nginx reload
+#=================================================
+# BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
+#=================================================
+
+# Backup the current version of the app
+ynh_backup_before_upgrade
+ynh_clean_setup () {
+	# restore it if the upgrade fails
+	ynh_restore_upgradebackup
+}
+# Exit if an error occurs during the execution of the script
+ynh_abort_if_errors
+
+#=================================================
+# CHECK THE PATH
+#=================================================
+
+path_url=$(ynh_normalize_url_path $path_url)	# Vérifie et corrige la syntaxe du path.
+
+#=================================================
+# ACTIVATE MAINTENANCE MODE
+#=================================================
+
+ynh_maintenance_mode_ON
+
+#=================================================
+# STANDARD UPGRADE STEPS
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+
+if [ "$upgrade_type" == "UPGRADE_APP" ]
+then
+	ynh_setup_source "$final_path"	# Télécharge la source, décompresse et copie dans $final_path
+fi
+
+#=================================================
+# NGINX CONFIGURATION
+#=================================================
+
+ynh_add_nginx_config
+
+#=================================================
+# SPECIFIC UPGRADE
+#=================================================
+# USE THE CONFIG FILE
+#=================================================
+
+ynh_replace_string "(no-config)" "config.json" "$final_path/app/index.html"
+
+#=================================================
+# COPY THE CONFIG FILE
+#=================================================
+
+# Copie ou modification d'un fichier de config
+ynh_backup_if_checksum_is_different "$final_path/app/config.json"	# Créé un backup du fichier de config si il a été modifié.
+cp ../conf/config.json "$final_path/app/"
+ynh_store_file_checksum "$final_path/app/config.json"	# Réenregistre la somme de contrôle du fichier de config
+
+#=================================================
+# GENERIC FINALISATION
+#=================================================
+# SECURING FILES AND DIRECTORIES
+#=================================================
+
+# Les fichiers appartiennent à root
+chown -R root: $final_path
+
+#=================================================
+# SETUP SSOWAT
+#=================================================
+
+# Make app public if necessary
+if [ $is_public -eq 1 ]
+then
+	ynh_app_setting_set $app skipped_uris "/"
+fi
+
+#=================================================
+# RELOAD NGINX
+#=================================================
+
+ynh_system_reload --service_name=nginx
+
+#=================================================
+# DEACTIVE MAINTENANCE MODE
+#=================================================
+
+ynh_maintenance_mode_OFF
