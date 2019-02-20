@@ -1,6 +1,6 @@
-SOURCE_URL=https://github.com/keeweb/keeweb/archive/gh-pages.zip
-SOURCE_SUM=73ff6c1d52b2ef61ce951bcd602fa8af
-SOURCE_SUM_PRG=md5sum
-SOURCE_FORMAT=zip
+SOURCE_URL=https://github.com/keeweb/keeweb/archive/v1.7.7.tar.gz
+SOURCE_SUM=cd36bd933c7f948d02be9beb02fe0ecdb46e630b875fbeebb42cb0a7558191af
+SOURCE_SUM_PRG=sha256sum
+SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=true
 SOURCE_FILENAME=

@@ -11,7 +11,7 @@ If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to
 ## Overview
 Web client for reading and editing Keepass files locally. It can also sync with WebDAV (Owncloud, Nextcloud...), Dropbox, Google Drive, OneDrive...
 
-**Shipped version:** 1.7.4
+**Shipped version:** 1.7.7
 
 ## Screenshots
 
@@ -38,9 +38,9 @@ No users support.
 
 #### Supported architectures
 
-* x86-64b - ![](https://ci-apps.yunohost.org/ci/logs/keeweb%20%28Community%29.svg)
-* ARMv8-A - ![](https://ci-apps-arm.yunohost.org/ci/logs/keeweb%20%28Community%29.svg)
-* Jessie x86-64b - ![](https://ci-stretch.nohost.me/ci/logs/keeweb%20%28Community%29.svg)
+* x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/keeweb%20%28Community%29.svg)](https://ci-apps.yunohost.org/ci/apps/keeweb/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/keeweb%20%28Community%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/keeweb/)
+* Jessie x86-64b - [![Build Status](https://ci-stretch.nohost.me/ci/logs/keeweb%20%28Community%29.svg)](https://ci-stretch.nohost.me/ci/apps/keeweb/)
 
 ## Additionnal informations
 
