@@ -6,15 +6,15 @@
 		"en": "Password manager compatible with KeePass.",
 		"fr": "Gestionnaire de mots de passe compatible avec KeePass."
 	},
-	"version": "1.7.7~ynh1",
+	"version": "1.7.7~ynh2",
 	"url": "https://keeweb.info/",
 	"license": "MIT",
 	"maintainer": {
-		"name": "Scith",
-		"url": "https://github.com/scith"
+		"name": "kay0u",
+		"email": "pierre@kayou.io"
 	},
 	"requirements": {
-		"yunohost": ">= 2.7.14"
+		"yunohost": ">= 3.2.0"
 	},
 	"multi_instance": true,
 	"services": [
