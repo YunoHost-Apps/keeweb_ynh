@@ -71,13 +71,11 @@ ynh_maintenance_mode_ON
 #=================================================
 # STANDARD UPGRADE STEPS
 #=================================================
-# DOWNLOAD, CHECK AND UNPACK SOURCE
+# INSTALL SOURCES
 #=================================================
 
-if [ "$upgrade_type" == "UPGRADE_APP" ]
-then
-	ynh_setup_source "$final_path"	# Télécharge la source, décompresse et copie dans $final_path
-fi
+mkdir -p "$final_path"
+cp -r ../sources/extra_files/app/* "$final_path"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -91,16 +89,16 @@ ynh_add_nginx_config
 # USE THE CONFIG FILE
 #=================================================
 
-ynh_replace_string "(no-config)" "config.json" "$final_path/app/index.html"
+ynh_replace_string "(no-config)" "config.json" "$final_path/index.html"
 
 #=================================================
 # COPY THE CONFIG FILE
 #=================================================
 
 # Copie ou modification d'un fichier de config
-ynh_backup_if_checksum_is_different "$final_path/app/config.json"	# Créé un backup du fichier de config si il a été modifié.
-cp ../conf/config.json "$final_path/app/"
-ynh_store_file_checksum "$final_path/app/config.json"	# Réenregistre la somme de contrôle du fichier de config
+ynh_backup_if_checksum_is_different "$final_path/config.json"	# Créé un backup du fichier de config si il a été modifié.
+cp ../conf/config.json "$final_path/"
+ynh_store_file_checksum "$final_path/config.json"	# Réenregistre la somme de contrôle du fichier de config
 
 #=================================================
 # GENERIC FINALISATION

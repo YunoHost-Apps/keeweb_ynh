@@ -52,15 +52,18 @@ ynh_webpath_register $app $domain $path_url
 ynh_app_setting_set $app domain $domain
 ynh_app_setting_set $app path $path_url
 ynh_app_setting_set $app is_public $is_public
+ynh_app_setting_set $app final_path $final_path
 
 #=================================================
 # STANDARD MODIFICATIONS
 #=================================================
-# DOWNLOAD, CHECK AND UNPACK SOURCE
+# INSTALL SOURCES
 #=================================================
 
-ynh_app_setting_set $app final_path $final_path
-ynh_setup_source "$final_path"	# Télécharge la source, décompresse et copie dans $final_path
+# To avoid a complete rebuild, I downloaded the gh-pages as explained here: https://github.com/keeweb/keeweb#self-hosting
+# and put all files in "../sources/extra_files/app/", like that I can assure the version install in YunoHost is the version described in the manifest
+mkdir -p "$final_path"
+cp -r ../sources/extra_files/app/* "$final_path"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -74,20 +77,20 @@ ynh_add_nginx_config
 # USE THE CONFIG FILE
 #=================================================
 
-ynh_replace_string "(no-config)" "config.json" "$final_path/app/index.html"
+ynh_replace_string "(no-config)" "config.json" "$final_path/index.html"
 
 #=================================================
 # COPY THE CONFIG FILE
 #=================================================
 
-cp ../conf/config.json "$final_path/app/"
+cp ../conf/config.json "$final_path/"
 
 #=================================================
 # STORE THE CHECKSUM OF THE CONFIG FILE
 #=================================================
 
 # Enregistre la somme de contrôle du fichier de config
-ynh_store_file_checksum "$final_path/app/config.json"
+ynh_store_file_checksum "$final_path/config.json"
 
 #=================================================
 # GENERIC FINALISATION
