@@ -75,7 +75,7 @@ ynh_maintenance_mode_ON
 #=================================================
 
 mkdir -p "$final_path"
-cp ../sources/extra_files/app/* "$final_path"
+cp -r ../sources/extra_files/app/* "$final_path"
 
 #=================================================
 # NGINX CONFIGURATION
