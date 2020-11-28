@@ -31,7 +31,6 @@ domain=$(ynh_app_setting_get $app domain)
 # BACKUP OF THE MAIN DIR OF THE APP
 #=================================================
 
-CHECK_SIZE "$final_path"
 ynh_backup "$final_path"
 
 #=================================================
