@@ -1,10 +1,7 @@
 CACHE MANIFEST
 
-# 2019-02-09:v1.7.7
-# updmin:v4.0.1
-
-CACHE:
-index.html
+# 2020-12-31:v1.16.7
+# updmin:v11.0.3
 
 NETWORK:
 *
