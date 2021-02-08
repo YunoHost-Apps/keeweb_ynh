@@ -11,7 +11,7 @@ If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to
 ## Overview
 Web client for reading and editing Keepass files locally. It can also sync with WebDAV (Nextcloud, Dropbox, Google Drive, OneDrive...)
 
-**Shipped version:** 1.7.7
+**Shipped version:** 1.16.7
 
 ## Screenshots
 
