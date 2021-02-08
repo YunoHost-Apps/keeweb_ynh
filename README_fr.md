@@ -57,9 +57,10 @@ Pas de support utilisateurs
 
 ## Liens
 
- * Reporter un bug: https://github.com/YunoHost-Apps/keeweb_ynh/issues
- * Site de Keeweb: https://keeweb.info/
- * Site de YunoHost: https://yunohost.org/
+ * Reporter un bug : https://github.com/YunoHost-Apps/keeweb_ynh/issues
+ * Site de Keeweb : https://keeweb.info/
+ * Dépôt de l'application principale : https://github.com/keeweb/keeweb
+ * Site de YunoHost : https://yunohost.org/
 
 ---
 

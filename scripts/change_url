@@ -25,7 +25,7 @@ app=$YNH_APP_INSTANCE_NAME
 # LOAD SETTINGS
 #=================================================
 
-final_path=$(ynh_app_setting_get $app final_path)
+final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 
 #=================================================
 # CHECK THE SYNTAX OF THE PATHS

@@ -75,7 +75,7 @@ ynh_add_nginx_config
 # USE THE CONFIG FILE
 #=================================================
 
-ynh_replace_string "(no-config)" "config.json" "$final_path/index.html"
+ynh_replace_string --match_string="(no-config)" --replace_string="config.json" --target_file="$final_path/index.html"
 
 #=================================================
 # COPY THE CONFIG FILE

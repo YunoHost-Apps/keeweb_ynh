@@ -15,10 +15,10 @@ source /usr/share/yunohost/helpers
 
 app=$YNH_APP_INSTANCE_NAME
 
-domain=$(ynh_app_setting_get $app domain)
-path_url=$(ynh_app_setting_get $app path)
-is_public=$(ynh_app_setting_get $app is_public)
-final_path=$(ynh_app_setting_get $app final_path)
+domain=$(ynh_app_setting_get --app=$app --key=domain)
+path_url=$(ynh_app_setting_get --app=$app --key=path)
+is_public=$(ynh_app_setting_get --app=$app --key=is_public)
+final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 
 #=================================================
 # CHECK VERSION
@@ -90,7 +90,7 @@ ynh_add_nginx_config
 # USE THE CONFIG FILE
 #=================================================
 
-ynh_replace_string "(no-config)" "config.json" "$final_path/index.html"
+ynh_replace_string --match_string="(no-config)" --replace_string="config.json" --target_file="$final_path/index.html"
 
 #=================================================
 # COPY THE CONFIG FILE
@@ -98,7 +98,7 @@ ynh_replace_string "(no-config)" "config.json" "$final_path/index.html"
 
 # Copie ou modification d'un fichier de config
 ynh_backup_if_checksum_is_different "$final_path/config.json"	# Créé un backup du fichier de config si il a été modifié.
-cp ../conf/config.json "$final_path/"
+cp ../conf/config.json "$final_path/config.json"
 ynh_store_file_checksum "$final_path/config.json"	# Réenregistre la somme de contrôle du fichier de config
 
 #=================================================

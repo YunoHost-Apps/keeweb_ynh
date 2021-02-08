@@ -59,6 +59,7 @@ No users support.
 
  * Report a bug: https://github.com/YunoHost-Apps/keeweb_ynh/issues
  * Keeweb website: https://keeweb.info/
+ * Upstream app repository: https://github.com/keeweb/keeweb
  * YunoHost website: https://yunohost.org/
 
 ---
