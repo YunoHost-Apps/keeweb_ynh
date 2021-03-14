@@ -51,7 +51,6 @@ ynh_webpath_register $app $domain $path_url
 
 ynh_app_setting_set $app domain $domain
 ynh_app_setting_set $app path $path_url
-ynh_app_setting_set $app is_public $is_public
 ynh_app_setting_set $app final_path $final_path
 
 #=================================================
@@ -105,10 +104,12 @@ chown -R root: $final_path
 # SETUP SSOWAT
 #=================================================
 
+
+
 # Make app public if necessary
-if [ $is_public -eq 1 ]
+if [ "$is_public" -eq 1 ]
 then
-	ynh_app_setting_set $app skipped_uris "/"
+	ynh_permission_update --permission="main" --add="visitors"
 fi
 
 #=================================================
