@@ -1,7 +1,7 @@
 # Keeweb for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/keeweb.svg)](https://dash.yunohost.org/appci/app/keeweb)  
-[![Install Keeweb with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=keeweb)
+[![Integration level](https://dash.yunohost.org/integration/keeweb.svg)](https://dash.yunohost.org/appci/app/keeweb) ![](https://ci-apps.yunohost.org/ci/badges/keeweb.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/keeweb.maintain.svg)  
+[![Install Keeweb with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=keeweb)
 
 *[Lire ce readme en français.](./README_fr.md)*
 
@@ -9,7 +9,7 @@
 If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to know how to install and enjoy it.*
 
 ## Overview
-Web client for reading and editing Keepass files locally. It can also sync with WebDAV (Owncloud, Nextcloud...), Dropbox, Google Drive, OneDrive...
+Web client for reading and editing Keepass files locally. It can also sync with WebDAV (Nextcloud, Dropbox, Google Drive, OneDrive...)
 
 **Shipped version:** 1.7.7
 
@@ -38,14 +38,13 @@ No users support.
 
 #### Supported architectures
 
-* x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/keeweb%20%28Community%29.svg)](https://ci-apps.yunohost.org/ci/apps/keeweb/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/keeweb%20%28Community%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/keeweb/)
-* Jessie x86-64b - [![Build Status](https://ci-stretch.nohost.me/ci/logs/keeweb%20%28Community%29.svg)](https://ci-stretch.nohost.me/ci/apps/keeweb/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/keeweb%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/keeweb/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/keeweb%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/keeweb/)
 
 ## Additionnal informations
 
-### Usage with OwnCloud/NextCloud
-1. Open your file through webdav using https://linktoowncloud/remote.php/webdav/PATH-TO-YOUR-KDBX-FILE and your username and password (no need to enter username and password if you are using a private Keeweb, as it will automatically detect that you are logged in OwnCloud/NextCloud
+### Usage with Nextcloud
+1. Open your file through webdav using https://linktoowncloud/remote.php/webdav/PATH-TO-YOUR-KDBX-FILE and your username and password (no need to enter username and password if you are using a private Keeweb, as it will automatically detect that you are logged in NextCloud)
 
 ### Usage for Dropbox sync
 1. [create](https://www.dropbox.com/developers/apps/create) a Dropbox app
@@ -64,8 +63,7 @@ No users support.
 
 ---
 
-Developers infos
-----------------
+## Developers infos
 
 Please do your pull request to the [testing branch](https://github.com/YunoHost-Apps/keeweb_ynh/tree/testing).
 
