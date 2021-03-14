@@ -11,15 +11,14 @@
 		setup_private=1
 		setup_public=1
 		upgrade=1
-		upgrade=1	from_commit=9e5c65c461a22d9b85be732e072ff938911106ad
+		upgrade=1	from_commit=6ec03114172c5de3291059756a38d57c63ffb4f2
 		backup_restore=1
 		multi_instance=1
-		port_already_use=0
 		change_url=1
 ;;; Options
-Email=maniackc_dev@crudelis.fr
+Email=
 Notification=down
 ;;; Upgrade options
-	; commit=9e5c65c461a22d9b85be732e072ff938911106ad
-		name=6 Dec 2016 9e5c65c461a22d9b85be732e072ff938911106ad
+	; commit=6ec03114172c5de3291059756a38d57c63ffb4f2
+		name=Merge pull request #17 from YunoHost-Apps/testing 
 		manifest_arg=domain=DOMAIN&path=PATH&is_public=1
