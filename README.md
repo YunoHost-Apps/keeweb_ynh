@@ -38,8 +38,8 @@ No users support.
 
 #### Supported architectures
 
-* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/keeweb%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/keeweb/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/keeweb%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/keeweb/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/keeweb.svg)](https://ci-apps.yunohost.org/ci/apps/keeweb/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/keeweb.svg)](https://ci-apps-arm.yunohost.org/ci/apps/keeweb/)
 
 ## Additionnal informations
 
