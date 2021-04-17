@@ -89,7 +89,7 @@ ynh_replace_string "(no-config)" "config.json" "$final_path/index.html"
 
 # Copie ou modification d'un fichier de config
 ynh_backup_if_checksum_is_different "$final_path/config.json"	# Créé un backup du fichier de config si il a été modifié.
-cp ../conf/config.json "$final_path/"
+cp ../conf/config.json "$final_path/config.json"
 ynh_store_file_checksum "$final_path/config.json"	# Réenregistre la somme de contrôle du fichier de config
 
 #=================================================
