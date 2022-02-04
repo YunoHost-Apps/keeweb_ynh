@@ -13,7 +13,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 Gestionnaire de mots de passe compatible avec KeePass
 
-**Version incluse :** 1.18.7~ynh1
+**Version incluse :** 1.18.8~ynh1
 
 **Démo :** https://app.keeweb.info/
 
