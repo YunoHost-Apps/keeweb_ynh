@@ -42,4 +42,3 @@ ynh_remove_nginx_config
 #=================================================
 
 ynh_script_progression --message="Removal of $app completed" --last
-

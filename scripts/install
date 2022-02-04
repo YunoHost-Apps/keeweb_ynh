@@ -79,15 +79,9 @@ ynh_replace_string "(no-config)" "config.json" "$final_path/index.html"
 #=================================================
 # COPY THE CONFIG FILE
 #=================================================
+ynh_script_progression --message="Adding a configuration file..."
 
-cp ../conf/config.json "$final_path/config.json"
-
-#=================================================
-# STORE THE CHECKSUM OF THE CONFIG FILE
-#=================================================
-
-# Enregistre la somme de contrôle du fichier de config
-ynh_store_file_checksum "$final_path/config.json"
+ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
 
 #=================================================
 # GENERIC FINALISATION
@@ -115,14 +109,6 @@ fi
 ynh_script_progression --message="Reloading NGINX web server..."
 
 ynh_systemd_action --service_name=nginx --action=reload
-
-#=================================================
-# SEND A README FOR THE ADMIN
-#=================================================
-
-message="If you facing an issue or want to improve this app, please open a new issue in this project: https://github.com/YunoHost-Apps/keeweb_ynh"
-
-ynh_send_readme_to_admin --app_message="$message" --recipients="root"
 
 #=================================================
 # END OF SCRIPT
