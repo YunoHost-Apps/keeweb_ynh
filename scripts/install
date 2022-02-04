@@ -63,6 +63,7 @@ ynh_system_user_create --username=$app --home_dir="$final_path"
 #=================================================
 # INSTALL SOURCES
 #=================================================
+ynh_script_progression --message="Setting up source files..."
 
 # To avoid a complete rebuild, I downloaded the gh-pages as explained here: https://github.com/keeweb/keeweb#self-hosting
 # and put all files in "../sources/extra_files/app/", like that I can assure the version install in YunoHost is the version described in the manifest
