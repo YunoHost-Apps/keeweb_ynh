@@ -3,18 +3,25 @@
 	"id": "keeweb",
 	"packaging_format": 1,
 	"description": {
-		"en": "Password manager compatible with KeePass.",
-		"fr": "Gestionnaire de mots de passe compatible avec KeePass."
+		"en": "Password manager compatible with KeePass",
+		"fr": "Gestionnaire de mots de passe compatible avec KeePass"
 	},
 	"version": "1.18.7~ynh1",
 	"url": "https://keeweb.info/",
+	"upstream": {
+        "license": "MIT",
+        "website": "https://keeweb.info/",
+        "demo": "https://app.keeweb.info/",
+        "admindoc": "https://github.com/keeweb/keeweb/wiki",
+        "code": "https://github.com/keeweb/keeweb"
+    },
 	"license": "MIT",
 	"maintainer": {
 		"name": "kay0u",
 		"email": "pierre@kayou.io"
 	},
 	"requirements": {
-		"yunohost": ">= 4.1.7"
+		"yunohost": ">= 4.3.0"
 	},
 	"multi_instance": true,
 	"services": [
@@ -24,8 +31,7 @@
 		"install" : [
 			{
 				"name": "domain",
-				"type": "domain",
-				"example": "example.com"
+				"type": "domain"
 			},
 			{
 				"name": "path",
