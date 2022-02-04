@@ -17,7 +17,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 Password manager compatible with KeePass
 
-**Shipped version:** 1.18.7~ynh1
+**Shipped version:** 1.18.8~ynh1
 
 **Demo:** https://app.keeweb.info/
 
