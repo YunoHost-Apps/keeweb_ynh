@@ -51,6 +51,14 @@ ynh_app_setting_set --app=$app --key=path --value=$path_url
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 
 #=================================================
+# CREATE DEDICATED USER
+#=================================================
+ynh_script_progression --message="Configuring system user..."
+
+# Create a system user
+ynh_system_user_create --username=$app --home_dir="$final_path"
+
+#=================================================
 # STANDARD MODIFICATIONS
 #=================================================
 # INSTALL SOURCES
@@ -90,7 +98,9 @@ ynh_add_config --template="../conf/config.json" --destination="$final_path/confi
 #=================================================
 
 # Les fichiers appartiennent à root
-chown -R root: $final_path
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
 
 #=================================================
 # SETUP SSOWAT
