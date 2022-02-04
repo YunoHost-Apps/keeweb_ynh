@@ -11,7 +11,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 ## Vue d'ensemble
 
-Gestionnaire de mots de passe compatible avec KeePass
+This webapp is a browser password manager compatible with KeePass databases. It doesn't require any server or additional resources.
 
 **Version incluse :** 1.18.8~ynh1
 
