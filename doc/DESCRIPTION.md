@@ -1,0 +1,1 @@
+This webapp is a browser password manager compatible with KeePass databases. It doesn't require any server or additional resources.
