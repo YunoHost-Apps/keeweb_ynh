@@ -5,7 +5,8 @@ It shall NOT be edited by hand.
 
 # Keeweb for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/keeweb.svg)](https://dash.yunohost.org/appci/app/keeweb) ![](https://ci-apps.yunohost.org/ci/badges/keeweb.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/keeweb.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/keeweb.svg)](https://dash.yunohost.org/appci/app/keeweb) ![Working status](https://ci-apps.yunohost.org/ci/badges/keeweb.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/keeweb.maintain.svg)
+
 [![Install Keeweb with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=keeweb)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -23,25 +24,26 @@ This webapp is a browser password manager compatible with KeePass databases. It 
 
 ## Screenshots
 
-![](./doc/screenshots/screenshot.png)
+![Screenshot of Keeweb](./doc/screenshots/screenshot.png)
 
 ## Documentation and resources
 
-* Official app website: https://keeweb.info/
-* Official admin documentation: https://github.com/keeweb/keeweb/wiki
-* Upstream app code repository: https://github.com/keeweb/keeweb
-* YunoHost documentation for this app: https://yunohost.org/app_keeweb
-* Report a bug: https://github.com/YunoHost-Apps/keeweb_ynh/issues
+* Official app website: <https://keeweb.info/>
+* Official admin documentation: <https://github.com/keeweb/keeweb/wiki>
+* Upstream app code repository: <https://github.com/keeweb/keeweb>
+* YunoHost Store: <https://apps.yunohost.org/app/keeweb>
+* Report a bug: <https://github.com/YunoHost-Apps/keeweb_ynh/issues>
 
 ## Developer info
 
 Please send your pull request to the [testing branch](https://github.com/YunoHost-Apps/keeweb_ynh/tree/testing).
 
 To try the testing branch, please proceed like that.
-```
+
+``` bash
 sudo yunohost app install https://github.com/YunoHost-Apps/keeweb_ynh/tree/testing --debug
 or
 sudo yunohost app upgrade keeweb -u https://github.com/YunoHost-Apps/keeweb_ynh/tree/testing --debug
 ```
 
-**More info regarding app packaging:** https://yunohost.org/packaging_apps
+**More info regarding app packaging:** <https://yunohost.org/packaging_apps>
