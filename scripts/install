@@ -13,50 +13,50 @@ source /usr/share/yunohost/helpers
 # MANAGE FAILURE OF THE SCRIPT
 #=================================================
 
-ynh_clean_setup () {
+#REMOVEME? ynh_clean_setup () {
 	### Remove this function if there's nothing to clean before calling the remove script.
 	true
 }
 # Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
+#REMOVEME? ynh_abort_if_errors
 
 #=================================================
 # RETRIEVE ARGUMENTS FROM THE MANIFEST
 #=================================================
 
-domain=$YNH_APP_ARG_DOMAIN
-path_url=$YNH_APP_ARG_PATH
-is_public=$YNH_APP_ARG_IS_PUBLIC
+#REMOVEME? domain=$YNH_APP_ARG_DOMAIN
+#REMOVEME? path=$YNH_APP_ARG_PATH
+#REMOVEME? is_public=$YNH_APP_ARG_IS_PUBLIC
 
-app=$YNH_APP_INSTANCE_NAME
+#REMOVEME? app=$YNH_APP_INSTANCE_NAME
 
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
 #=================================================
-ynh_script_progression --message="Validating installation parameters..."
+#REMOVEME? ynh_script_progression --message="Validating installation parameters..."
 
-final_path=/var/www/$app
-test ! -e "$final_path" || ynh_die --message="This path already contains a folder"
+#REMOVEME? install_dir=/var/www/$app
+#REMOVEME? test ! -e "$install_dir" || ynh_die --message="This path already contains a folder"
 
 # Register (book) web path
-ynh_webpath_register --app=$app --domain=$domain --path_url=$path_url
+#REMOVEME? ynh_webpath_register --app=$app --domain=$domain --path=$path
 
 #=================================================
 # STORE SETTINGS FROM MANIFEST
 #=================================================
-ynh_script_progression --message="Storing installation settings..."
+#REMOVEME? ynh_script_progression --message="Storing installation settings..."
 
-ynh_app_setting_set --app=$app --key=domain --value=$domain
-ynh_app_setting_set --app=$app --key=path --value=$path_url
-ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+#REMOVEME? ynh_app_setting_set --app=$app --key=domain --value=$domain
+#REMOVEME? ynh_app_setting_set --app=$app --key=path --value=$path
+#REMOVEME? ynh_app_setting_set --app=$app --key=install_dir --value=$install_dir
 
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
-ynh_script_progression --message="Configuring system user..."
+#REMOVEME? ynh_script_progression --message="Configuring system user..."
 
 # Create a system user
-ynh_system_user_create --username=$app --home_dir="$final_path"
+#REMOVEME? ynh_system_user_create --username=$app --home_dir="$install_dir"
 
 #=================================================
 # STANDARD MODIFICATIONS
@@ -67,8 +67,8 @@ ynh_script_progression --message="Setting up source files..."
 
 # To avoid a complete rebuild, I downloaded the gh-pages as explained here: https://github.com/keeweb/keeweb#self-hosting
 # and put all files in "../sources/extra_files/app/", like that I can assure the version install in YunoHost is the version described in the manifest
-mkdir -p "$final_path"
-cp -r ../sources/extra_files/app/* "$final_path"
+mkdir -p "$install_dir"
+cp -r ../sources/extra_files/app/* "$install_dir"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -83,14 +83,14 @@ ynh_add_nginx_config
 # USE THE CONFIG FILE
 #=================================================
 
-ynh_replace_string "(no-config)" "config.json" "$final_path/index.html"
+ynh_replace_string "(no-config)" "config.json" "$install_dir/index.html"
 
 #=================================================
 # COPY THE CONFIG FILE
 #=================================================
 ynh_script_progression --message="Adding a configuration file..."
 
-ynh_add_config --template="../conf/config.json" --destination="$final_path/config.json"
+ynh_add_config --template="../conf/config.json" --destination="$install_dir/config.json"
 
 #=================================================
 # GENERIC FINALISATION
@@ -99,27 +99,27 @@ ynh_add_config --template="../conf/config.json" --destination="$final_path/confi
 #=================================================
 
 # Les fichiers appartiennent à root
-chmod 750 "$final_path"
-chmod -R o-rwx "$final_path"
-chown -R $app:www-data "$final_path"
+chmod 750 "$install_dir"
+chmod -R o-rwx "$install_dir"
+chown -R $app:www-data "$install_dir"
 
 #=================================================
 # SETUP SSOWAT
 #=================================================
-ynh_script_progression --message="Configuring permissions..."
+#REMOVEME? ynh_script_progression --message="Configuring permissions..."
 
 # Make app public if necessary
-if [ $is_public -eq 1 ]
+#REMOVEME? if [ $is_public -eq 1 ]
 then
-	ynh_permission_update --permission="main" --add="visitors"
+#REMOVEME? 	ynh_permission_update --permission="main" --add="visitors"
 fi
 
 #=================================================
 # RELOAD NGINX
 #=================================================
-ynh_script_progression --message="Reloading NGINX web server..."
+#REMOVEME? ynh_script_progression --message="Reloading NGINX web server..."
 
-ynh_systemd_action --service_name=nginx --action=reload
+#REMOVEME? ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================
 # END OF SCRIPT
