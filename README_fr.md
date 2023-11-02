@@ -18,7 +18,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 This webapp is a browser password manager compatible with KeePass databases. It doesn't require any server or additional resources.
 
-**Version incluse :** 1.18.8~ynh1
+**Version incluse :** 1.18.8~ynh2
 
 **Démo :** https://app.keeweb.info/
 
