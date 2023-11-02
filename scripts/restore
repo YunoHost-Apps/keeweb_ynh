@@ -10,47 +10,6 @@ source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# MANAGE SCRIPT FAILURE
-#=================================================
-
-# Exit if an error occurs during the execution of the script
-#REMOVEME? ynh_abort_if_errors
-
-#=================================================
-# LOAD SETTINGS
-#=================================================
-
-#REMOVEME? app=$YNH_APP_INSTANCE_NAME
-
-#REMOVEME? domain=$(ynh_app_setting_get $app domain)
-#REMOVEME? path=$(ynh_app_setting_get $app path)
-#REMOVEME? #REMOVEME? install_dir=$(ynh_app_setting_get $app install_dir)
-
-#=================================================
-# CHECK IF THE APP CAN BE RESTORED
-#=================================================
-#REMOVEME? ynh_script_progression --message="Validating restoration parameters..."
-
-#REMOVEME? test ! -d $install_dir || ynh_die "There is already a directory: $install_dir "
-
-#=================================================
-# STANDARD RESTORE STEPS
-#=================================================
-# RESTORE OF THE NGINX CONFIGURATION
-#=================================================
-ynh_script_progression --message="Restoring the NGINX configuration..."
-
-ynh_restore_file --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
-
-#=================================================
-# RECREATE THE DEDICATED USER
-#=================================================
-#REMOVEME? ynh_script_progression --message="Recreating the dedicated system user..."
-
-# Create the dedicated user (if not existing)
-#REMOVEME? ynh_system_user_create --username=$app --home_dir="$install_dir"
-
-#=================================================
 # RESTORE OF THE MAIN DIR OF THE APP
 #=================================================
 ynh_script_progression --message="Restoring the app main directory..."
@@ -60,6 +19,13 @@ ynh_restore_file --origin_path="$install_dir"
 chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
+
+#=================================================
+# RESTORE OF THE NGINX CONFIGURATION
+#=================================================
+ynh_script_progression --message="Restoring the NGINX configuration..."
+
+ynh_restore_file --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 
 #=================================================
 # GENERIC FINALISATION

@@ -10,55 +10,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# MANAGE FAILURE OF THE SCRIPT
-#=================================================
-
-#REMOVEME? ynh_clean_setup () {
-	### Remove this function if there's nothing to clean before calling the remove script.
-	true
-}
-# Exit if an error occurs during the execution of the script
-#REMOVEME? ynh_abort_if_errors
-
-#=================================================
-# RETRIEVE ARGUMENTS FROM THE MANIFEST
-#=================================================
-
-#REMOVEME? domain=$YNH_APP_ARG_DOMAIN
-#REMOVEME? path=$YNH_APP_ARG_PATH
-#REMOVEME? is_public=$YNH_APP_ARG_IS_PUBLIC
-
-#REMOVEME? app=$YNH_APP_INSTANCE_NAME
-
-#=================================================
-# CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
-#=================================================
-#REMOVEME? ynh_script_progression --message="Validating installation parameters..."
-
-#REMOVEME? install_dir=/var/www/$app
-#REMOVEME? test ! -e "$install_dir" || ynh_die --message="This path already contains a folder"
-
-# Register (book) web path
-#REMOVEME? ynh_webpath_register --app=$app --domain=$domain --path=$path
-
-#=================================================
-# STORE SETTINGS FROM MANIFEST
-#=================================================
-#REMOVEME? ynh_script_progression --message="Storing installation settings..."
-
-#REMOVEME? ynh_app_setting_set --app=$app --key=domain --value=$domain
-#REMOVEME? ynh_app_setting_set --app=$app --key=path --value=$path
-#REMOVEME? ynh_app_setting_set --app=$app --key=install_dir --value=$install_dir
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-#REMOVEME? ynh_script_progression --message="Configuring system user..."
-
-# Create a system user
-#REMOVEME? ynh_system_user_create --username=$app --home_dir="$install_dir"
-
-#=================================================
 # STANDARD MODIFICATIONS
 #=================================================
 # INSTALL SOURCES
@@ -90,7 +41,7 @@ ynh_replace_string "(no-config)" "config.json" "$install_dir/index.html"
 #=================================================
 ynh_script_progression --message="Adding a configuration file..."
 
-ynh_add_config --template="../conf/config.json" --destination="$install_dir/config.json"
+ynh_add_config --template="config.json" --destination="$install_dir/config.json"
 
 #=================================================
 # GENERIC FINALISATION
@@ -102,24 +53,6 @@ ynh_add_config --template="../conf/config.json" --destination="$install_dir/conf
 chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
-
-#=================================================
-# SETUP SSOWAT
-#=================================================
-#REMOVEME? ynh_script_progression --message="Configuring permissions..."
-
-# Make app public if necessary
-#REMOVEME? if [ $is_public -eq 1 ]
-then
-#REMOVEME? 	ynh_permission_update --permission="main" --add="visitors"
-fi
-
-#=================================================
-# RELOAD NGINX
-#=================================================
-#REMOVEME? ynh_script_progression --message="Reloading NGINX web server..."
-
-#REMOVEME? ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================
 # END OF SCRIPT
