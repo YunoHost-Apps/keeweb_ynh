@@ -5,7 +5,7 @@ name = "Keeweb"
 description.en = "Password manager compatible with KeePass"
 description.fr = "Gestionnaire de mots de passe compatible avec KeePass"
 
-version = "1.18.8~ynh1"
+version = "1.18.8~ynh2"
 
 maintainers = ["kay0u"]
 
