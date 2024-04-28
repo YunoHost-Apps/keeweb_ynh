@@ -38,7 +38,7 @@ ram.runtime = "50M"
     help.en = "If enabled, KeeWeb will be accessible by people who do not have an account. This can be changed later via the webadmin."
     help.fr = "Si cette case est cochée, KeeWeb sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
     type = "group"
-    default = false
+    default = "visitors"
 
 [resources]
     [resources.system_user]
