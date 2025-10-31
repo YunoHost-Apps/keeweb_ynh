@@ -1,58 +1,36 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC STARTING
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
-source _common.sh
 source /usr/share/yunohost/helpers
 
-#=================================================
-# CHECK VERSION
-#=================================================
-
-upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
-# STANDARD UPGRADE STEPS
 #=================================================
 # INSTALL SOURCES
 #=================================================
 
-if [ "$upgrade_type" == "UPGRADE_APP" ]
-then
-	ynh_script_progression --message="Upgrading source files..."
+ynh_script_progression "Upgrading source files..."
 
-	# Download, check integrity, uncompress and patch the source from app.src
-	mkdir -p "$install_dir"
-	cp -r ../sources/extra_files/app/* "$install_dir"
-fi
+# Download, check integrity, uncompress and patch the source from app.src
+mkdir -p "$install_dir"
+cp -r ../sources/extra_files/* "$install_dir"
 
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
 
-ynh_add_nginx_config
+ynh_config_add_nginx
 
-#=================================================
-# SPECIFIC UPGRADE
 #=================================================
 # USE THE CONFIG FILE
 #=================================================
 
-ynh_replace_string "(no-config)" "config.json" "$install_dir/index.html"
+ynh_replace --match="(no-config)" --replace="config.json" --file="$install_dir/index.html"
 
 #=================================================
 # COPY THE CONFIG FILE
 #=================================================
 
 # Copie ou modification d'un fichier de config
-ynh_add_config --template="config.json" --destination="$install_dir/config.json"
+ynh_config_add --template="config.json" --destination="$install_dir/config.json"
 
-#=================================================
-# GENERIC FINALISATION
 #=================================================
 # SECURING FILES AND DIRECTORIES
 #=================================================
@@ -65,4 +43,4 @@ chown -R $app:www-data "$install_dir"
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of $app completed" --last
+ynh_script_progression "Upgrade of $app completed"
