@@ -10,7 +10,7 @@ ynh_script_progression "Upgrading source files..."
 
 # Download, check integrity, uncompress and patch the source from app.src
 mkdir -p "$install_dir"
-cp -r ../sources/extra_files/* "$install_dir"
+cp -r ../sources/extra_files/app* "$install_dir"
 
 #=================================================
 # NGINX CONFIGURATION

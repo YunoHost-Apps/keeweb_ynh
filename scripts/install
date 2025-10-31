@@ -10,7 +10,7 @@ ynh_script_progression "Setting up source files..."
 # To avoid a complete rebuild, I downloaded the gh-pages as explained here: https://github.com/keeweb/keeweb#self-hosting
 # and put all files in "../sources/", like that I can assure the version install in YunoHost is the version described in the manifest
 mkdir -p "$install_dir"
-cp -r ../sources/extra_files/* "$install_dir"
+cp -r ../sources/extra_files/app/* "$install_dir"
 
 #=================================================
 # NGINX CONFIGURATION
