@@ -1,50 +1,37 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC STARTING
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
-source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# STANDARD MODIFICATIONS
-#=================================================
 # INSTALL SOURCES
 #=================================================
-ynh_script_progression --message="Setting up source files..."
+ynh_script_progression "Setting up source files..."
 
 # To avoid a complete rebuild, I downloaded the gh-pages as explained here: https://github.com/keeweb/keeweb#self-hosting
-# and put all files in "../sources/extra_files/app/", like that I can assure the version install in YunoHost is the version described in the manifest
+# and put all files in "../sources/", like that I can assure the version install in YunoHost is the version described in the manifest
 mkdir -p "$install_dir"
 cp -r ../sources/extra_files/app/* "$install_dir"
 
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring NGINX web server..."
+ynh_script_progression "Configuring NGINX web server..."
 
-ynh_add_nginx_config
+ynh_config_add_nginx
 
-#=================================================
-# SPECIFIC SETUP
 #=================================================
 # USE THE CONFIG FILE
 #=================================================
 
-ynh_replace_string "(no-config)" "config.json" "$install_dir/index.html"
+ynh_replace --match="(no-config)" --replace="config.json" --file="$install_dir/index.html"
 
 #=================================================
 # COPY THE CONFIG FILE
 #=================================================
-ynh_script_progression --message="Adding a configuration file..."
+ynh_script_progression "Adding $app's configuration..."
 
-ynh_add_config --template="config.json" --destination="$install_dir/config.json"
+ynh_config_add --template="config.json" --destination="$install_dir/config.json"
 
-#=================================================
-# GENERIC FINALISATION
 #=================================================
 # SECURING FILES AND DIRECTORIES
 #=================================================
@@ -58,4 +45,4 @@ chown -R $app:www-data "$install_dir"
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed" --last
+ynh_script_progression "Installation of $app completed"

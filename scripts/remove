@@ -1,24 +1,17 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC STARTING
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
-source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
 # REMOVE NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Removing NGINX web server configuration..."
+ynh_script_progression "Removing NGINX web server configuration..."
 
 # Remove the dedicated NGINX config
-ynh_remove_nginx_config
+ynh_config_remove_nginx
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Removal of $app completed" --last
+ynh_script_progression "Removal of $app completed"
