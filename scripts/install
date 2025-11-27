@@ -20,8 +20,6 @@ ynh_script_progression "Configuring NGINX web server..."
 ynh_config_add_nginx
 
 #=================================================
-# SPECIFIC SETUP
-#=================================================
 # USE THE CONFIG FILE
 #=================================================
 

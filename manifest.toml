@@ -17,13 +17,12 @@ admindoc = "https://github.com/keeweb/keeweb/wiki"
 code = "https://github.com/keeweb/keeweb"
 
 [integration]
-yunohost = ">= 11.2.18"
+yunohost = ">= 12.1.17"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
 ldap = false
-
 sso = false
 
 disk = "50M"
