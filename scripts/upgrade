@@ -38,6 +38,7 @@ ynh_config_add --template="config.json" --destination="$install_dir/config.json"
 chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
+chmod 640 "$install_dir/config.json"
 
 #=================================================
 # END OF SCRIPT
